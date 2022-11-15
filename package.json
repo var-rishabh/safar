@@ -1,0 +1,28 @@
+{
+  "name": "safar",
+  "version": "1.0.0",
+  "description": "A way to make your Safar easy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/var-rishabh/safar.git"
+  },
+  "author": "Rishabh | Nazim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/var-rishabh/safar/issues"
+  },
+  "homepage": "https://github.com/var-rishabh/safar#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2",
+    "nodemon": "^2.0.20"
+  }
+}
