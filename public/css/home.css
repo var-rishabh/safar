@@ -135,29 +135,25 @@ h1 {
 }
 
 #card-img1 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("/images/hawa.jpg");
+  background-image: url("/images/hawa.jpg");
   background-position: top;
   background-size: cover;
 }
 
 #card-img2 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("/images/qutub.jpg");
+  background-image: url("/images/QM.jpg");
   background-position: top;
   background-size: cover;
 }
 
 #card-img3 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("/images/taj.jpg");
+  background-image: url("/images/taj.jpg");
   background-position: top;
   background-size: cover;
 }
 
 #card-img4 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("/images/redfort.jpg");
+  background-image: url("/images/redfort.jpg");
   background-position: top;
   background-size: cover;
 }
@@ -174,11 +170,89 @@ h1 {
 }
 
 .container3 {
+  margin-top: 80px;
   width: 100%;
   height: 90vh;
-  border: 1px solid red;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
+}
+
+.about-img-1 {
+  width: 30%;
+  height: 80%;
+  margin-left: 150px;
+  background-image: url("/images/humayun.jpg");
+  background-position: center;
+  background-size: cover;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  border-radius: 20px;
+  animation: slideleft 1.5s cubic-bezier(.46,.36,.63,.8);
+}
+
+@keyframes slideleft {
+  0% {
+    transform: translateX(-700px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.about {
+  border-radius: 20px;
+  z-index: 1;
+  margin-left: -500px;
+  width: 40%;
+  height: 50%;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  background-color: rgb(232, 246, 251);
+  display: flex;
+  justify-content: space-around;
+  align-items: left;
+  flex-direction: column;
+  padding: 25px 50px;
+  animation: slideright 1.5s cubic-bezier(.46,.36,.63,.8);
+}
+
+@keyframes slideright {
+  0% {
+    transform: translateX(700px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.about-text {
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+}
+
+.about-head {
+  margin-top: 10px;
+  font-size: 40px;
+  font-family: "Poppins", sans-serif;
+}
+
+.about-button {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  color: #ffffff;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  padding: 19px 24px;
+  cursor: pointer;
+  width: max-content;
+}
+
+p {
+  font-family: "NTR", sans-serif;
+  font-size: 1.2em;
+  line-height: 1;
 }
