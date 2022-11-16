@@ -58,3 +58,8 @@ li a {
 .button:hover {
   box-shadow: rgba(151, 65, 252, 1) 0 15px 30px -5px;
 }
+
+img {
+  width: 40px;
+  height: 40px;
+}

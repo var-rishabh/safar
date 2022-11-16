@@ -15,7 +15,7 @@ html {
 .container1 {
   margin-top: 70px;
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,7 +82,7 @@ h1 {
 }
 
 .container2 {
-  margin: 80px 0;
+  margin: 50px 0;
   width: 100%;
   height: 70vh;
   display: flex;
@@ -172,7 +172,6 @@ h1 {
 }
 
 .container3 {
-  margin-top: 80px;
   width: 100%;
   height: 90vh;
   display: flex;
@@ -190,7 +189,7 @@ h1 {
   background-size: cover;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   border-radius: 20px;
-  animation: slideleft 1.5s cubic-bezier(.46,.36,.63,.8);
+  animation: slideleft 1.5s cubic-bezier(0.46, 0.36, 0.63, 0.8);
 }
 
 @keyframes slideleft {
@@ -215,7 +214,7 @@ h1 {
   align-items: left;
   flex-direction: column;
   padding: 15px 50px;
-  animation: slideright 1.5s cubic-bezier(.46,.36,.63,.8);
+  animation: slideright 1.5s cubic-bezier(0.46, 0.36, 0.63, 0.8);
 }
 
 @keyframes slideright {
@@ -255,24 +254,24 @@ h1 {
 
 p {
   font-family: "NTR", sans-serif;
-  font-size: 1.2em;
+  font-size: 1.5em;
   line-height: 1;
 }
 
-.card-text-title{
+.card-text-title {
   text-align: left;
   font-weight: bolder;
   font-size: 1.5em;
   font-family: "Poppins", sans-serif;
 }
 
-.location{
+.location {
   text-align: left;
   font-size: 1em;
   font-family: "Lato", sans-serif;
 }
 
-.timing{
+.timing {
   text-align: left;
   font-size: 0.8em;
   font-family: "Lato", sans-serif;
@@ -280,30 +279,29 @@ p {
   margin-top: 10px;
 }
 
-.button-card{
+.button-card {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
-.card-button{
+.card-button {
   text-align: center;
   align-items: center;
   background: rgb(75, 101, 229);
   border-radius: 0 0 25px 25px;
-  padding: 15px 10px;
+  padding: 25px 10px;
   width: 100%;
   font-size: 1.2em;
 }
 
-.text-card{
+.text-card {
   margin-left: 5px;
   display: flex;
   justify-content: space-around;
 }
 
-.price{
+.price {
   font-size: 1.8em;
   font-family: "Poppins", sans-serif;
   font-weight: bolder;
@@ -313,6 +311,6 @@ p {
   align-items: center;
 }
 
-.all-content{
+.all-content {
   padding: 20px 0px;
 }
