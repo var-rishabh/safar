@@ -26,7 +26,10 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-// import all routes
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+})
 
 const auth = require('./routes/auth');
 const monument = require('./routes/monument');
@@ -43,4 +46,3 @@ app.get("/", async (req, res) => {
 
 
 module.exports= app;
-
