@@ -1,50 +1,60 @@
 nav {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 2;
 }
 
 .navbar {
-    background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    padding: 15px 50px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding: 15px 50px;
 }
 
 .logo {
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-size: 2em;
-    padding: 2px 8px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 2em;
+  padding: 2px 8px;
 }
 
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
+  padding: 0;
 }
 
 .list-items {
-    display: flex;    
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    width: 30%;
-    font-size: 1.3em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  width: 30%;
+  font-size: 1.3em;
 }
 
-li, .button {
-    font-family: 'NTR', sans-serif;
+li a {
+  font-family: "NTR", sans-serif;
 }
 
 .button {
-    padding: 0 18px;
-    border-radius: 25px;
-    background-color: #2465ab;
-    color: white;
-    font-size: 1.5em;
+  font-family: "NTR", sans-serif;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  color: #FFFFFF;
+  font-size: 20px;
+  padding: 0 20px 0 20px;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: rgba(151, 65, 252, 1) 0 15px 30px -5px;
 }
