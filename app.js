@@ -4,7 +4,7 @@ const path = require("path");
 const colors = require('colors');
 
 // social authentication
-const auth = require('./routes/auth');
+
 const passportConfig =require("./passport/passport");
 const passport= require('passport');
 const cookieSession = require('cookie-session')
@@ -26,7 +26,16 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
+// import all routes
+
+const auth = require('./routes/auth');
+const monument = require('./routes/monument');
+const chat = require('./routes/chat')
+
 app.use("/auth" ,auth)
+app.use("/monument",monument)
+app.use("/chat",chat)
+
 
 app.get("/", async (req, res) => {
     res.render("home");
