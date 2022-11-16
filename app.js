@@ -5,8 +5,8 @@ const colors = require('colors');
 
 // social authentication
 
-const passportConfig =require("./passport/passport");
-const passport= require('passport');
+const passportConfig = require("./passport/passport");
+const passport = require('passport');
 const cookieSession = require('cookie-session')
 
 
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieSession({
-    maxAge: 3*24*60*60*1000,
+    maxAge: 3 * 24 * 60 * 60 * 1000,
     keys: ["thisissocialkey"]
 }))
 
@@ -33,16 +33,14 @@ app.use((req, res, next) => {
 
 const auth = require('./routes/auth');
 const monument = require('./routes/monument');
-const chat = require('./routes/chat')
+const chat = require('./routes/chatRoute')
 
-app.use("/auth" ,auth)
-app.use("/monument",monument)
-app.use("/chat",chat)
-
+app.use("/auth", auth)
+app.use("/monument", monument)
+app.use("/chat", chat)
 
 app.get("/", async (req, res) => {
     res.render("home");
 });
 
-
-module.exports= app;
+module.exports = app;
