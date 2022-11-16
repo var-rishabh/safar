@@ -82,7 +82,7 @@ h1 {
 }
 
 .container2 {
-  margin-top: 80px;
+  margin: 80px 0;
   width: 100%;
   height: 70vh;
   display: flex;
@@ -123,6 +123,8 @@ h1 {
   transition: 0.4s ease-out;
   flex-direction: column;
   left: 0px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
 #card-img1,
@@ -212,7 +214,7 @@ h1 {
   justify-content: space-around;
   align-items: left;
   flex-direction: column;
-  padding: 25px 50px;
+  padding: 15px 50px;
   animation: slideright 1.5s cubic-bezier(.46,.36,.63,.8);
 }
 
@@ -226,13 +228,13 @@ h1 {
 }
 
 .about-text {
-  font-size: 20px;
+  font-size: 1.2em;
   font-family: "Lato", sans-serif;
 }
 
 .about-head {
-  margin-top: 10px;
-  font-size: 40px;
+  margin-top: 5px;
+  font-size: 2em;
   font-family: "Poppins", sans-serif;
 }
 
@@ -243,10 +245,10 @@ h1 {
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 1em;
   justify-content: center;
   line-height: 1em;
-  padding: 19px 24px;
+  padding: 12px 24px;
   cursor: pointer;
   width: max-content;
 }
@@ -255,4 +257,62 @@ p {
   font-family: "NTR", sans-serif;
   font-size: 1.2em;
   line-height: 1;
+}
+
+.card-text-title{
+  text-align: left;
+  font-weight: bolder;
+  font-size: 1.5em;
+  font-family: "Poppins", sans-serif;
+}
+
+.location{
+  text-align: left;
+  font-size: 1em;
+  font-family: "Lato", sans-serif;
+}
+
+.timing{
+  text-align: left;
+  font-size: 0.8em;
+  font-family: "Lato", sans-serif;
+  color: grey;
+  margin-top: 10px;
+}
+
+.button-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-button{
+  text-align: center;
+  align-items: center;
+  background: rgb(75, 101, 229);
+  border-radius: 0 0 25px 25px;
+  padding: 15px 10px;
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.text-card{
+  margin-left: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.price{
+  font-size: 1.8em;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.all-content{
+  padding: 20px 0px;
 }
