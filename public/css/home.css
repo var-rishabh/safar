@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: #fff;
+  background-color: #fff;
+  scroll-behavior: smooth;
+}
+
+.container1 {
+  margin-top: 70px;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contents {
+  margin: 30px 0 0 0;
+  width: 90%;
+  height: 90%;
+  border-radius: 25px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+.div1 {
+  border-radius: 25px;
+  width: 100%;
+  height: 100%;
+  background: rgb(209, 224, 255);
+  background: linear-gradient(
+    90deg,
+    rgb(192, 212, 252) 15%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+    url("/images/landing.jpg");
+  background-position: top;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+h1 {
+  font-family: "Lato", sans-serif;
+  font-size: 5em;
+}
+
+.tag1 {
+  margin: 0 0 30px 0;
+  padding: 15px;
+  color: white;
+}
+
+#explore-btn {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 12px 24px;
+  border: 0;
+  color: #3a4149;
+  background: #e7ebee;
+  line-height: 1.15;
+  font-size: 16px;
+}
+
+#explore-btn:hover {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #2465ab;
+}
+
+.container2 {
+  margin-top: 80px;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: top;
+  align-items: center;
+  flex-direction: column;
+}
+
+::selection {
+  background-color: black;
+  color: white;
+}
+
+.heading {
+  padding: 15px;
+}
+
+#head1 {
+  font-size: 3em;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 90%;
+  height: 100%;
+}
+
+.card {
+  display: flex;
+  height: 80%;
+  width: 20%;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  transition: 0.4s ease-out;
+  flex-direction: column;
+  left: 0px;
+}
+
+#card-img1,
+#card-img2,
+#card-img3,
+#card-img4 {
+  border-radius: 25px 25px 0 0;
+  width: 100%;
+  height: 60%;
+}
+
+#card-img1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/images/hawa.jpg");
+  background-position: top;
+  background-size: cover;
+}
+
+#card-img2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/images/qutub.jpg");
+  background-position: top;
+  background-size: cover;
+}
+
+#card-img3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/images/taj.jpg");
+  background-position: top;
+  background-size: cover;
+}
+
+#card-img4 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("/images/redfort.jpg");
+  background-position: top;
+  background-size: cover;
+}
+
+#card-text {
+  width: 100%;
+  height: 40%;
+}
+
+.card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+  background-image: none;
+}
+
+.container3 {
+  width: 100%;
+  height: 90vh;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}

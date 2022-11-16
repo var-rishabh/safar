@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat+Alternates:wght@700&family=NTR&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+</head>
+
+<body>
+    <%- include("./navbar") %>
+        <div class="container1">
+            <div class="contents">
+                <div class="div1">
+                    <div class="tag1">
+                        <h1>Explore the beauty of India.</h1>
+                    </div>
+                    <div>
+                        <button id="explore-btn">
+                            <a href="#popular">Explore Now </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container3">
+            <div class="about-img-1" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img src="/img/human1.jpg" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 pt-5 pb-lg-5">
+                <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
+                    <h1 class="mb-3">We Provide Best Tour Packages In Your Budget</h1>
+                    <p>Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore
+                        sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et
+                        erat sed diam duo</p>
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <img class="img-fluid" src="img/about-1.jpg" alt="">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="img/about-2.jpg" alt="">
+                        </div>
+                    </div>
+                    <a href="" class="btn btn-primary mt-1">Book Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="popular"></div>
+
+        <div class="container2">
+            <div class="heading">
+                <h1 id="head1">Popular Monuments</h1>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div id="card-img1"></div>
+                    <div id="card-text"></div>
+                </div>
+                <div class="card">
+                    <div id="card-img2"></div>
+                    <div id="card-text"></div>
+                </div>
+                <div class="card">
+                    <div id="card-img3"></div>
+                    <div id="card-text"></div>
+                </div>
+                <div class="card">
+                    <div id="card-img4"></div>
+                    <div id="card-text"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <%- include("./footer") %>
+
+</body>
+
+</html>

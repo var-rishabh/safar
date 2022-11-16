@@ -1,0 +1,50 @@
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+.navbar {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 15px 50px;
+}
+
+.logo {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 2em;
+    padding: 2px 8px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.list-items {
+    display: flex;    
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    width: 30%;
+    font-size: 1.3em;
+}
+
+li, .button {
+    font-family: 'NTR', sans-serif;
+}
+
+.button {
+    padding: 0 18px;
+    border-radius: 25px;
+    background-color: #2465ab;
+    color: white;
+    font-size: 1.5em;
+}
