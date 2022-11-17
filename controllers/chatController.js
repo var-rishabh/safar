@@ -1,6 +1,6 @@
 module.exports.getChat = async (req, res) => {
     try {
-        res.render("chat");
+        res.render("chat", {user : res.locals.currentUser});
     } catch (err) {
         return res.status(400).json({
 			status: 'failure',

@@ -35,8 +35,12 @@ const monument = require('./routes/monumentRoute');
 const chat = require('./routes/chatRoute')
 
 app.use("/auth", auth);
+<<<<<<< HEAD
 app.use("/monuments", monument)
 // app.use("/guides", guide)
+=======
+app.use("/monument", monument);
+>>>>>>> e410a8d (chat backend complete)
 app.use("/chat", chat);
 
 app.get("/", async (req, res) => {

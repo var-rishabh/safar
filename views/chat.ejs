@@ -17,16 +17,74 @@
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/chat.css" />
+    <script src="/socket.io/socket.io.js"></script>
+
 </head>
 
 <body>
     <%- include("./navbar") %>
-        
-    <div class="container">
-        <div class="chats"></div>
-    </div>
 
-    <%- include("./footer") %>
+        <div class="container">
+            <div class="chats">
+                <%= currentUser ? currentUser.name : "SAFAR" %>
+                    <ul id="messages"></ul>
+                    <div id="feedback"></div>
+                    <form id="form" action="">
+                        <input id="input" autocomplete="off" /><button>Send</button>
+                    </form>
+
+            </div>
+        </div>
+
+        <%- include("./footer") %>
+
+            <script>
+                var socket = io();
+                let username = "";
+                let allData = '<%- JSON.stringify(user) %>';
+                if (allData == "") {
+                    username = "SAFAR";
+                } else {
+                    let ax = JSON.parse(allData);
+                    username = ax.name;
+                }
+                console.log(username);
+                var messages = document.getElementById('messages');
+                var form = document.getElementById('form');
+                var input = document.getElementById('input');
+                socket.emit('welcome', username);
+
+
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (input.value) {
+                        appendMessage(`YOU: ${input.value}`)
+                        socket.emit('send-chat-message', input.value, username);
+                        input.value = '';
+                    }
+                });
+                input.addEventListener("keypress", () => {
+                    socket.emit("typing", username);
+                });
+                socket.on('chat message', msg => {
+                    console.log(` ${msg.username}: ${msg.message}`);
+                    appendMessage(` ${msg.username}: ${msg.message}`);
+                    window.scrollTo(0, document.body.scrollHeight);
+                });
+                socket.on("typing", (name) => {
+                    feedback.innerHTML = `<p><em>${name}</em> is typing...</p>`;
+                    setTimeout(() => {
+                        feedback.innerHTML = "";
+                    }, 2000);
+                });
+                function appendMessage(message) {
+                    var item = document.createElement('li');
+                    item.textContent = message;
+                    messages.appendChild(item);
+
+                }
+            </script>
+
 </body>
 
 </html>
