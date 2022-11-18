@@ -4,13 +4,12 @@ require('dotenv').config()
 
 connectWithDb();
 
-const httpServer = app.listen(process.env.PORT, () => {
-    console.log(`Server is running at port:${process.env.PORT}`)
-})
+
 // chat by socket.io
-const http = require('http').Server(app);
+const http = require('http');
+const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(httpServer);
+const io = new Server(server);
 io.on('connection', (socket) => {
     console.log('socket io connected!');
     socket.on('welcome', username => {
@@ -30,3 +29,6 @@ io.on('connection', (socket) => {
     })
 });
 
+server.listen(process.env.PORT, () => {
+    console.log(`Server is running at port:${process.env.PORT}`)
+})
