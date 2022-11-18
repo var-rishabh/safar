@@ -11,11 +11,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 io.on('connection', (socket) => {
     console.log('socket io connected!');
-    socket.on('welcome', username => {
-        if (username == "SAFAR") {
-            socket.broadcast.emit('chat message', { message: "Welcome To SAFAR's  ChatBot! How can I help you ?", username: username });
-        }
-    });
+    
     socket.on("typing", (name) => {
         socket.broadcast.emit("typing", name);
     });
