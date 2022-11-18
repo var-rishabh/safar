@@ -1,4 +1,4 @@
-{
+var states = {
     "Andhra Pradesh": [
         "Anantapur",
         "Chittoor",

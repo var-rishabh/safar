@@ -1,12 +1,8 @@
-const axios = require('axios');
-const monument = require('../monuments.json')
+const { monuments } = require('../public/js/monuments')
+
 module.exports.getMonuments = async (req, res) => {
     try {
-        let states;
-        let monuments = monument
-        states = await axios.get("https://api.jsonserve.com/rPpMIb")
-        
-        res.render('monuments', { x: states.data, y: monuments});
+        res.render('monuments', { text: "Delhi" });
     } catch (err) {
         return res.status(400).json({
             status: 'failure',
@@ -16,21 +12,16 @@ module.exports.getMonuments = async (req, res) => {
     }
 }
 
-module.exports.getMonument = async (req,res) =>{
-    try{
-        const monuments=monument;
-        const City = req.body.cityName;
-        console.log(City)
-        const myObj2 = JSON.stringify(monuments);
-        const myObj = JSON.parse(myObj2);
-        const reqMonument= myObj[City]
-        console.log(reqMonument)
-        return res.status(200).json({
-            status: 'success',
-            data: reqMonument
-        });
-
-    } catch(err){
+module.exports.getMonument = async (req, res) => {
+    try {
+        const { name, m } = req.body;
+        // console.log(name, m);
+        for (let key in m) {
+            if (key == name) {
+                console.log(m[key]);
+            }
+        }
+    } catch (err) {
         return res.status(400).json({
             status: 'failure',
             message: err.message,

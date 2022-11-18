@@ -1,103 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <script>
-      window.onload = function () {
-        var citySel= document.getElementById("cities");
-        var monumentSel = document.getElementById("monumnet");
-        
-       
-        topicSel.onchange = function () {
-          //empty Chapters dropdown
-          chapterSel.length = 1;
-          //display correct values
-          var z = subjectObject[subjectSel.value][this.value];
-          for (var i = 0; i < z.length; i++) {
-            chapterSel.options[chapterSel.options.length] = new Option(
-              z[i],
-              z[i]
-            );
-          }
-        };
-      };
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Safar</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat+Alternates:wght@700&family=NTR&family=Poppins:wght@700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safar</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="/css/monuments.css" />
-    <link rel="stylesheet" href="/css/navbar.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-  </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat+Alternates:wght@700&family=NTR&family=Poppins:wght@700&display=swap"
+    rel="stylesheet" />
 
-  <body>
-    <%- include("./navbar") %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <link rel="stylesheet" href="/css/monuments.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
 
-        <div class="container1">
-            <div class="banner">
-                <div class="tag1">
-                    <h1>Monuments</h1>
-                </div>
-            </div>
+  <script src="/js/states.js"></script>
+  <script src="/js/monuments.js"></script>
+
+</head>
+
+<body>
+  <%- include("./navbar") %>
+
+    <div class="container1">
+      <div class="banner">
+        <div class="tag1">
+          <h1>Monuments</h1>
         </div>
+      </div>
+    </div>
 
     <div class="container2">
       <div class="form">
-        <form action=''>
+        <form>
           <div class="select">
-            <select>
+            <select id="country">
               <option value="" disabled selected hidden>Choose a State</option>
-              <%for(var i=0 ; i< x.length;i++){%> <%for (var key in x[i]) { %>
-                 <option value=`${<%=key %>}`><%= key %></option>
-              <%}%> <%}%>
             </select>
           </div>
           <div class="select">
-            <select>
+            <select id="state-code">
               <option value="" disabled selected hidden>Choose a City</option>
-              <%for(var i=0; i<y.length;i++){%> <%for( var key in y[i]) { %>
-                  <option value=`${<%= key %>}`><%= key %></option>
-              <%}%> 
-                 <%}%>
             </select>
           </div>
           <div>
-            <button type="submit" class="button-85">Search</button>
+            <button type="submit" class="button-85" onclick="return clickButton();">Search</button>
           </div>
         </form>
       </div>
     </div>
-
     <div class="container3">
       <div class="cards-list">
-        <a href="#">
-           <div class="card 1"> 
-           <div class="card_image">
-             <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> 
-            </div> 
-            <div class="card_title title-white"> 
-              <p></p> 
-            </div> 
-            </div> 
-        </a> 
+        <a href="/monuments/taj_mahal">
+          <div class="card 1">
+            <div class="card_image">
+              <img src="https://i.redd.it/b3esnz5ra34y.jpg" />
+            </div>
+            <div class="card_title title-white">
+              <p>Imagica</p>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
+
+    <p id="msg"></p>
 
     <div class="images-mon">
       <img src="/images/mon1.png" alt="monuments" />
     </div>
     <%- include("./footer") %>
-  </body>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script>
+        let user_country_code = "";
+        (function () {
+          let country_list = states;
+          let option = '';
+          option += '<option>Select a State</option>';
+          for (let country_code in country_list) {
+            let selected = (country_code == user_country_code) ? ' selected' : '';
+            option += '<option value="' + country_code + '">' + country_code + '</option>';
+          }
+          document.getElementById('country').innerHTML = option;
+          let state_code_id = document.getElementById("state-code");
+          function create_states_dropdown() {
+            let options = '';
+            let country_code = document.getElementById("country").value;
+            let statescd = country_list[country_code];
+            for (let state_new in statescd) {
+              let selected_s = '';
+              console.log(statescd[state_new]);
+              options += '<option value="' + statescd[state_new] + '">' + statescd[state_new] + '</option>';
+            }
+            state_code_id.innerHTML = options;
+          }
+          const country_select = document.getElementById("country");
+          country_select.addEventListener('change', create_states_dropdown);
+          create_states_dropdown();
+        })();
+      </script>
+      <script>
+
+        function clickButton() {
+          var e = document.getElementById("state-code");
+          var text = e.options[e.selectedIndex].text;
+          let all_monuments = monuments;
+          $.ajax({
+            type: "post",
+            url: "/monuments/get/monument",
+            data: {
+              'm': all_monuments,
+              'name': text
+            },
+            cache: false,
+            success: function (html) {
+              alert(text);
+              $('#msg').html(html);
+            }
+          });
+          return false;
+        }
+      </script>
+
+
+</body>
+
 </html>
