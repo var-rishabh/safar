@@ -19,7 +19,7 @@ passport.use(new GoogleStrategy({
 
   clientID: "842019695710-irqcikpcvq4cj1su1di2np96meh8u24u.apps.googleusercontent.com",
   clientSecret: "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",
-  callbackURL: "https://safarind.herokuapp.com/auth/google/callback"
+  callbackURL: "https://localhost:800/auth/google/callback"
 },
   (accessToken, refreshToken, profile, next) => {
     User.findOne({ email: profile._json.email }).then((user) => {
