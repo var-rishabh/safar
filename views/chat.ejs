@@ -26,16 +26,19 @@
 
         <div class="container" id="container">
             <div class="chats" id="chatbox">
+
                 <%= currentUser ? currentUser.name : "SAFAR" %>
                     <ul id="messages">
                         <li>Welcome To SAFAR's ChatBot! How can I help you ?</li>
                     </ul>
+
                     <div id="feedback"></div>
-                    <form id="form" action="">
-                        <input id="input" autocomplete="off" /><button>Send</button>
-                    </form>
+
 
             </div>
+            <form id="form" action="">
+                <input id="input" autocomplete="off" /><button>Send</button>
+            </form>
         </div>
 
         <%- include("./footer") %>
