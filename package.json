@@ -29,7 +29,6 @@
     "passport": "^0.5.3",
     "passport-google-oauth20": "^2.0.0",
     "socket.io": "^4.5.3",
-    "validator": "^13.7.0",
-    "vercel": "^28.5.3"
+    "validator": "^13.7.0"
   }
 }
