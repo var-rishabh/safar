@@ -1,11 +1,15 @@
+const axios = require('axios');
+
 module.exports.getMonuments = async (req, res) => {
     try {
-        res.render("monuments");
+        let states;
+        states = await axios.get("https://api.jsonserve.com/rPpMIb")
+        res.render('monuments', { x: states.data });
     } catch (err) {
         return res.status(400).json({
-			status: 'failure',
-			message: err.message,
-			data: null
-		});
+            status: 'failure',
+            message: err.message,
+            data: null
+        });
     }
 }
