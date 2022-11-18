@@ -4,7 +4,6 @@ require('dotenv').config()
 
 connectWithDb();
 
-
 // chat by socket.io
 const http = require('http');
 const server = http.createServer(app);

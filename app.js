@@ -32,10 +32,10 @@ app.use((req, res, next) => {
 const auth = require('./routes/auth');
 const monument = require('./routes/monumentRoute');
 // const guide = require('./routes/guideRoute');
-const chat = require('./routes/chatRoute')
+const chat = require('./routes/chatRoute');
 
 app.use("/auth", auth);
-app.use("/monuments", monument)
+app.use("/monuments", monument);
 // app.use("/guides", guide)
 app.use("/chat", chat);
 
