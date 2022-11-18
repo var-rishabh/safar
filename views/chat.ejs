@@ -24,74 +24,74 @@
 <body>
     <%- include("./navbar") %>
 
-        <div class="container" id="container">
-            <div class="chats" id="chatbox">
-
-                <%= currentUser ? currentUser.name : "SAFAR" %>
-                    <ul id="messages">
-                        <li>Welcome To SAFAR's ChatBot! How can I help you ?</li>
-                    </ul>
-
-                    <div id="feedback"></div>
-
-
+    <div class="container">
+        <div class="chats" id="chatbox">
+            <div class="chat">
+                <ul id="messages">
+                    <li id="admin">Welcome To SAFAR's Agent! How can I help you ?</li>
+                </ul>
+                <div id="feedback"></div>
             </div>
             <form id="form" action="">
                 <input id="input" autocomplete="off" /><button>Send</button>
             </form>
         </div>
+    </div>
 
-        <%- include("./footer") %>
+    <%- include("./footer") %>
 
-            <script>
-                var socket = io();
-                let username = "";
-                let allData = '<%- JSON.stringify(user) %>';
-                if (allData == "") {
-                    username = "SAFAR";
-                } else {
-                    let ax = JSON.parse(allData);
-                    username = ax.name;
-                }
-                console.log(username);
-                var messages = document.getElementById('messages');
-                var form = document.getElementById('form');
-                var input = document.getElementById('input');
-                var chatbox = document.getElementById('chatbox');
-                socket.emit('welcome', username);
+    <script>
+        var socket = io();
+        let username = "";
+        let allData = '<%- JSON.stringify(user) %>';
+        if (allData == "") {
+            username = "SAFAR";
+        } else {
+            let ax = JSON.parse(allData);
+            username = ax.name;
+        }
+        console.log(username);
+        var messages = document.getElementById('messages');
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+        var chatbox = document.getElementById('chatbox');
+        socket.emit('welcome', username);
 
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (input.value) {
+                appendMessage(`You: ${input.value}`)
+                socket.emit('send-chat-message', input.value, username);
+                input.value = '';
+            }
+        });
+        input.addEventListener("keypress", () => {
+            socket.emit("typing", username);
+        });
+        socket.on('chat message', msg => {
+            appendMessage(` ${msg.username}: ${msg.message}`, msg.username);
 
+        });
+        socket.on("typing", (name) => {
+            feedback.innerHTML = `<p>${name} is typing...</p>`;
+            setTimeout(() => {
+                feedback.innerHTML = "";
+            }, 2000);
+        });
+        function appendMessage(message, username) {
+            var item = document.createElement('li');
+            console.log(username);
+            item.textContent = message;
+            if (username == "SAFAR") {
+                item.setAttribute("id", "admin");
+            } else {
+                item.setAttribute("id", "client");
+            }
+            messages.appendChild(item);
+            chatbox.scroll(0, chatbox.scrollHeight);
 
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    if (input.value) {
-                        appendMessage(`YOU: ${input.value}`)
-                        socket.emit('send-chat-message', input.value, username);
-                        input.value = '';
-                    }
-                });
-                input.addEventListener("keypress", () => {
-                    socket.emit("typing", username);
-                });
-                socket.on('chat message', msg => {
-                    console.log(` ${msg.username}: ${msg.message}`);
-                    appendMessage(` ${msg.username}: ${msg.message}`);
-
-                });
-                socket.on("typing", (name) => {
-                    feedback.innerHTML = `<p><em>${name}</em> is typing...</p>`;
-                    setTimeout(() => {
-                        feedback.innerHTML = "";
-                    }, 2000);
-                });
-                function appendMessage(message) {
-                    var item = document.createElement('li');
-                    item.textContent = message;
-                    messages.appendChild(item);
-                    chatbox.scroll(0, chatbox.scrollHeight);
-
-                }
-            </script>
+        }
+    </script>
 
 </body>
 
