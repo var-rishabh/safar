@@ -60,6 +60,18 @@ h1 {
   margin: 0 0 30px 0;
   padding: 15px;
   color: white;
+  animation: slidedown 1.5s cubic-bezier(0.46, 0.36, 0.63, 0.8);
+}
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 #explore-btn {
@@ -74,6 +86,16 @@ h1 {
   background: #e7ebee;
   line-height: 1.15;
   font-size: 16px;
+  animation: slideup 1.5s cubic-bezier(0.46, 0.36, 0.63, 0.8);
+}
+
+@keyframes slideup {
+  0% {
+    transform: translateY(300px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 #explore-btn:hover {
