@@ -1,0 +1,159 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .container1 {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    z-index: -1;
+  }
+
+  .banner {
+    z-index: -1;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url("/images/hawa2.jpg");
+    width: 90%;
+    height: 100%;
+    background-position: top;
+    background-size: cover;
+    background-attachment: fixed;
+    border-radius: 0 0 25px 25px;
+  }
+  
+  .banner .tag1{
+    margin-top: 200px;
+    font-family: "Lato", sans-serif;
+    font-size: 4em;
+    color: #fff;
+    text-align: center;
+    animation: slidedown 1s cubic-bezier(0.46, 0.36, 0.63, 0.8);
+  }
+  
+  @keyframes slidedown {
+    0% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    70%{
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .images-mon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0 2px 0;
+  }
+  
+  .images-mon img {
+    margin-top: 10px;
+    width: 50%;
+    height: 16vh;
+    filter: sepia(100%) hue-rotate(200deg) saturate(5 50%);
+  }
+
+  .container3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    width: 100%;
+    height: max-content;
+  }
+  
+  .cards-list {
+    z-index: 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .card-guide {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.5);
+    transition: 0.3s;
+    padding: 20px 40px;
+  }
+  
+  .guide-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-60px);
+    z-index: 1;
+  }
+  
+   .container3  img {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+  }
+  
+  .card-guide:hover {
+    height: 420px;
+  }
+  
+  .guide-content {
+    text-align: left;
+    color: #fff;
+    transition: 0.3s;
+    transform: translateY(-300px);
+    opacity: 0;
+  }
+  
+  .card-guide:hover .guide-content {
+    opacity: 1;
+    transform: translateY(-200px);
+    color: black;
+    font-size: large;
+  }
+
+  .guide-head{
+    text-align: center;
+    margin: 20px;
+    font-size: 1.5em;
+    font-family: "Lato", sans-serif;
+  }
+  
+  .guide-img h2{
+    text-align: center;
+    font-size: 1.8em;
+    font-family: "Lato", sans-serif;
+  }
+
+  .guide-content .guide-book-now{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    font-family: "Lato", sans-serif;
+  }
+
+  .guide-content .guide-book-now button{
+    margin: 50px;
+    width: 300px;
+    border: none;
+    height: 50px;
+    color: #fff;
+    background-color: rgba(42, 42, 208, 0.818);
+    margin-top: 30px;
+    font-family: "Lato", sans-serif;
+  }
+
+
+  
