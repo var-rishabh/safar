@@ -16,7 +16,7 @@
 
 .banner {
   z-index: -1;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("/images/taj4.jpg");
   width: 90%;
   height: 100%;
@@ -24,6 +24,29 @@
   background-size: contain;
   background-attachment: fixed;
   border-radius: 0 0 25px 25px;
+}
+
+.banner .tag1{
+  margin-top: 200px;
+  font-family: "Lato", sans-serif;
+  font-size: 4em;
+  color: #fff;
+  text-align: center;
+  animation: slidedown 1s cubic-bezier(0.46, 0.36, 0.63, 0.8);
+}
+
+@keyframes slidedown {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  70%{
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .container2 {
