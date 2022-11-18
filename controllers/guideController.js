@@ -16,8 +16,8 @@ module.exports.getGuide = async (req, res) => {
 
 module.exports.bookGuide = async (req, res) => {
     try {
-        const name = req.params.guideName;
-        res.render('book', { guide_name: name });
+        const name = req.params.monumentName;
+        res.render('bookGuide', { monument_name: name });
     } catch (err) {
         return res.status(400).json({
             status: 'failure',
