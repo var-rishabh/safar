@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat+Alternates:wght@700&family=NTR&family=Poppins:wght@700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/guide.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+</head>
+
+<body>
+    <%- include("./navbar") %>
+
+        <div class="container1">
+            <div class="banner">
+                <div class="tag1">
+                    <h1>Guides</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container2">
+            <div class="form">
+                <form action="#">
+                    <div class="select">
+                        <select>
+                            <option value="" disabled selected hidden>Choose a State</option>
+                            <%for(var i=0 ; i< x.length;i++){%>
+                                <%for (var key in x[i]) { %>
+                                    <option value=`${<%= key %>}`><%= key %></option>
+                                <%}%>
+                            <%}%>
+                        </select>
+                    </div>
+                    <div class="">
+                        <select id="standard-select">
+                            <option value="" disabled selected hidden>Choose a City</option>
+                            <option value="Option 1">Option 1</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="button-85">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="container3">
+            <div class="cards-list">
+                <a href="#">
+                    <div class="card 1">
+                        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+                        <div class="card_title title-white">
+                            <p>Imagica</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="card 1">
+                        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+                        <div class="card_title title-white">
+                            <p>Imagica</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="card 1">
+                        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+                        <div class="card_title title-white">
+                            <p>Imagica</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="card 1">
+                        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+                        <div class="card_title title-white">
+                            <p>Imagica</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="card 1">
+                        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+                        <div class="card_title title-white">
+                            <p>Imagica</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="images-mon">
+            <img src="/images/mon1.png" alt="monuments">
+        </div>
+        <%- include("./footer") %>
+
+</body>
+
+</html>
