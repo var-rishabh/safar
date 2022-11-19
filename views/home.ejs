@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="/css/home.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+
+    <script src="/js/states.js"></script>
+    <script src="/js/monuments.js"></script>
+
 </head>
 
 <body>
@@ -33,6 +37,26 @@
                         </button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="container5">
+            <div class="form">
+                <form action="/monuments" method="POST">
+                    <div class="select">
+                        <select id="country" name="states-list">
+                            <option value="" disabled selected hidden>Choose a State</option>
+                        </select>
+                    </div>
+                    <div class="select">
+                        <select id="state-code" name="cities_list">
+                            <option value="" disabled selected hidden>Choose a City</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="button-85">Search</button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -169,6 +193,35 @@
 
 
         <%- include("./footer") %>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script>
+                (function () {
+                    let user_country_code = "";
+                    let country_list = states;
+                    let option = '';
+                    option += '<option>Select a State</option>';
+                    for (let country_code in country_list) {
+                        let selected = (country_code == user_country_code) ? ' selected' : '';
+                        option += '<option value="' + country_code + '">' + country_code + '</option>';
+                    }
+                    document.getElementById('country').innerHTML = option;
+                    let state_code_id = document.getElementById("state-code");
+                    function create_states_dropdown() {
+                        let options = '';
+                        let country_code = document.getElementById("country").value;
+                        let statescd = country_list[country_code];
+                        for (let state_new in statescd) {
+                            let selected_s = '';
+                            options += '<option value="' + statescd[state_new] + '">' + statescd[state_new] + '</option>';
+                        }
+                        state_code_id.innerHTML = options;
+                    }
+                    const country_select = document.getElementById("country");
+                    country_select.addEventListener('change', create_states_dropdown);
+                    create_states_dropdown();
+                })();
+            </script>
 
 </body>
 

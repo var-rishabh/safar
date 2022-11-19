@@ -34,98 +34,114 @@
       </div>
     </div>
 
-    <div class="container2">
-      <div class="form">
-        <form>
-          <div class="select">
-            <select id="country">
-              <option value="" disabled selected hidden>Choose a State</option>
-            </select>
-          </div>
-          <div class="select">
-            <select id="state-code">
-              <option value="" disabled selected hidden>Choose a City</option>
-            </select>
-          </div>
-          <div>
-            <button type="submit" class="button-85" onclick="return clickButton();">Search</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="container3">
-      <div class="cards-list">
-        <a href="/monuments/taj_mahal">
-          <div class="card 1">
-            <div class="card_image">
-              <img src="https://i.redd.it/b3esnz5ra34y.jpg" />
+    <% if (data == 'none' ) {%>
+      <div class="container3">
+        <div class="cards-list">
+          <a href="/monuments/Red Fort">
+            <div class="card 1">
+              <div class="card_image">
+                <img src="/images/redfort.jpg" />
+              </div>
+              <div class="card_title title-white">
+                <p>Red Fort</p>
+              </div>
             </div>
-            <div class="card_title title-white">
-              <p>Imagica</p>
+          </a>
+          <a href="/monuments/Jantar Mantar">
+            <div class="card 1">
+              <div class="card_image">
+                <img src="https://img.traveltriangle.com/blog/wp-content/uploads/2019/05/Jantar-Mantar-cover-img.jpg" />
+              </div>
+              <div class="card_title title-white">
+                <p>Jantar Mantar</p>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+          <a href="/monuments/Purana Quila">
+            <div class="card 1">
+              <div class="card_image">
+                <img src="https://static.toiimg.com/thumb/msid-33785638,width-550,height-433/33785638.jpg" />
+              </div>
+              <div class="card_title title-white">
+                <p>Purana Quila</p>
+              </div>
+            </div>
+          </a>
+          <a href="/monuments/Jama Masjid">
+            <div class="card 1">
+              <div class="card_image">
+                <img src="https://img.staticmb.com/mbcontent//images/uploads/2022/7/jama-masjid-delhi.jpg" />
+              </div>
+              <div class="card_title title-white">
+                <p>Jama Masjid</p>
+              </div>
+            </div>
+          </a>
+          <a href="/monuments/Humayuns Tomb">
+            <div class="card 1">
+              <div class="card_image">
+                <img src="/images/humayun.jpg" />
+              </div>
+              <div class="card_title title-white">
+                <p>Humayuns Tomb</p>
+              </div>
+            </div>
+          </a>
+          <a href="/monuments/Bara Khamba">
+            <div class="card 1">
+              <div class="card_image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Bara_Khamba_ii.jpg/1200px-Bara_Khamba_ii.jpg" />
+              </div>
+              <div class="card_title title-white">
+                <p>Bara Khamba</p>
+              </div>
+            </div>
+          </a>
+          <a href="/monuments/India Gate">
+            <div class="card 1">
+              <div class="card_image">
+                <img src="https://static.trip101.com/paragraph_media/pictures/001/814/237/large/travel-4813658_1280.jpg?1582537711" />
+              </div>
+              <div class="card_title title-white">
+                <p>India Gate</p>
+              </div>
+            </div>
+          </a>
+          <a href="/monuments/Tomb of Nizamuddin Auliya">
+            <div class="card 1">
+              <div class="card_image">
+                <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/39/ad/f5.jpg" />
+              </div>
+              <div class="card_title title-white">
+                <p>Tomb of Nizammuddin</p>
+              </div>
+            </div>
+          </a>
+          <a href="/monuments/Tomb of Amir Khusro">
+            <div class="card 1">
+              <div class="card_image">
+                <img src="https://www.studiodharma.in/uploads/post/60405b4453bfd.jpg" />
+              </div>
+              <div class="card_title title-white">
+                <p>Tomb of Amir Khusro</p>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
-    </div>
+      <% } else { %>
+        <div class="no-data">
+          <%= data %>
+        </div>
+        <% } %>
 
-    <p id="msg"></p>
+          <p id="msg"></p>
 
-    <div class="images-mon">
-      <img src="/images/mon1.png" alt="monuments" />
-    </div>
-    <%- include("./footer") %>
+          <div class="images-mon">
+            <img src="/images/mon1.png" alt="monuments" />
+          </div>
+          <%- include("./footer") %>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script>
-        let user_country_code = "";
-        (function () {
-          let country_list = states;
-          let option = '';
-          option += '<option>Select a State</option>';
-          for (let country_code in country_list) {
-            let selected = (country_code == user_country_code) ? ' selected' : '';
-            option += '<option value="' + country_code + '">' + country_code + '</option>';
-          }
-          document.getElementById('country').innerHTML = option;
-          let state_code_id = document.getElementById("state-code");
-          function create_states_dropdown() {
-            let options = '';
-            let country_code = document.getElementById("country").value;
-            let statescd = country_list[country_code];
-            for (let state_new in statescd) {
-              let selected_s = '';
-              console.log(statescd[state_new]);
-              options += '<option value="' + statescd[state_new] + '">' + statescd[state_new] + '</option>';
-            }
-            state_code_id.innerHTML = options;
-          }
-          const country_select = document.getElementById("country");
-          country_select.addEventListener('change', create_states_dropdown);
-          create_states_dropdown();
-        })();
-      </script>
-      <script>
-
-        function clickButton() {
-          var e = document.getElementById("state-code");
-          var text = e.options[e.selectedIndex].text;
-          let all_monuments = monuments;
-          $.ajax({
-            type: "post",
-            url: "/monuments/get/monument",
-            data: {
-              'm': all_monuments,
-              'name': text
-            },
-            cache: false,
-            success: function (html) {
-              alert(text);
-              $('#msg').html(html);
-            }
-          });
-          return false;
-        }
-      </script>
 
 
 </body>

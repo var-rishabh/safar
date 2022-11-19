@@ -1,53 +1,26 @@
+// Inside app.js
 const express = require('express');
 const app = express();
-const path = require("path");
-const colors = require('colors');
 
 const Razorpay = require('razorpay');
+
 const bodyparser = require('body-parser') ;
 app.use(require('body-parser').json());
 var instance = new Razorpay({
+
     key_id: "rzp_test_jz1qRgWLRxhf8n",
+
     key_secret: "TuagXi1XifPOb9664cEbwdmZ"
 });
 
-// social authentication
-const passportConfig = require("./passport/passport");
-const passport = require('passport');
-const cookieSession = require('cookie-session')
+app.use("/assets", express.static('assets'));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const PORT = process.env.PORT || '5000';
+app.get('/', (req, res) => {
+    res.render('home.ejs')
+});
 
-app.use(cookieSession({
-    maxAge: 3 * 24 * 60 * 60 * 1000,
-    keys: ["thisissocialkey"]
-}))
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.set('view engine', 'ejs');
-app.set("views", path.join(__dirname, "views"));
-
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use((req, res, next) => {
-    res.locals.currentUser = req.user;
-    next();
-})
-
-const auth = require('./routes/auth');
-const monument = require('./routes/monumentRoute');
-const guide = require('./routes/guideRoute');
-const chat = require('./routes/chatRoute');
-
-app.use("/auth", auth);
-app.use("/monuments", monument);
-app.use("/guides", guide);
-app.use("/chat", chat);
-
-app.post('monuments/create/orderId', (req, res) => {
+app.post('/create/orderId', (req, res) => {
     console.log('new order!!', req.body);
     var options = {
         amount: req.body.price,  // amount in the smallest currency unit
@@ -61,7 +34,7 @@ app.post('monuments/create/orderId', (req, res) => {
 })
 
 
-app.post("/monuments/api/payment/verify", (req, res) => {
+app.post("/api/payment/verify", (req, res) => {
     console.log("verify reached");
     let body = req.body.response.razorpay_order_id + "|" + req.body.response.razorpay_payment_id;
 
@@ -77,8 +50,6 @@ app.post("/monuments/api/payment/verify", (req, res) => {
     res.send(response);
 });
 
-app.get("/", async (req, res) => {
-    res.render("home");
-});
-
-module.exports = app;
+app.listen(1234, () => {
+    console.log(`Example app listening at http://localhost:1234}`)
+})

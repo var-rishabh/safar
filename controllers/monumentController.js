@@ -1,8 +1,19 @@
-const { monuments } = require('../public/js/monuments')
+module.exports.bookMonuments = async (req, res) => {
+    try {
+        console.log(req.body.cities_list);
+        res.render('monuments', { data: "none"});
+    } catch (err) {
+        return res.status(400).json({
+            status: 'failure',
+            message: err.message,
+            data: null
+        });
+    }
+}
 
 module.exports.getMonuments = async (req, res) => {
     try {
-        res.render('monuments', { text: "Delhi" });
+        res.render('monuments', { data: "No Monument Found." });
     } catch (err) {
         return res.status(400).json({
             status: 'failure',
@@ -15,7 +26,6 @@ module.exports.getMonuments = async (req, res) => {
 module.exports.getMonument = async (req, res) => {
     try {
         const { name, m } = req.body;
-        // console.log(name, m);
         for (let key in m) {
             if (key == name) {
                 console.log(m[key]);
