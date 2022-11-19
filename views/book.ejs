@@ -103,15 +103,13 @@
 
             <script>
                 var orderId;
-
-
                 $(document).ready(function () {
 
                     let monu_price = 8000;
                     const monument_price = monu_price.toString();
 
                     var settings = {
-                        "url": "/create/orderId",
+                        "url": "/monuments/create/orderId",
                         "method": "POST",
                         "timeout": 0,
                         "headers": {
@@ -144,22 +142,22 @@
                         //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
                         "handler": function (response) {
 
-                            // alert(response.razorpay_payment_id);
-                            // alert(response.razorpay_order_id);
-                            // alert(response.razorpay_signature);
+                            console.log(response.razorpay_payment_id);
+                            // console.log(response.razorpay_order_id);
+                            // console.log(response.razorpay_signature);
                             var settings = {
-                                "url": "/api/payment/verify",
-                                "method": "POST",
+                                "url": "/final",
+                                "method": "GET",
                                 "timeout": 0,
                                 "headers": {
                                     "Content-Type": "application/json"
                                 },
-                                "data": JSON.stringify({ response }),
+                                // "data": JSON.stringify({ response }),
 
 
                             }
                             $.ajax(settings).done(function (response) {
-                                alert(JSON.stringify(response));
+                                window.location.href = "/final";
                             });
 
 
@@ -181,12 +179,12 @@
                     var rzp1 = new Razorpay(options);
                     rzp1.on('payment.failed', function (response) {
                         // console.log(response.error.code);
-                        // console.log(response.error.description);
-                        // console.log(response.error.source);
-                        // console.log(response.error.step);
-                        // console.log(response.error.reason);
-                        // console.log(response.error.metadata.order_id);
-                        // console.log(response.error.metadata.payment_id);
+                        console.log(response.error.description);
+                        console.log(response.error.source);
+                        console.log(response.error.step);
+                        console.log(response.error.reason);
+                        console.log(response.error.metadata.order_id);
+                        console.log(response.error.metadata.payment_id);
                     });
                     rzp1.open();
                     e.preventDefault();

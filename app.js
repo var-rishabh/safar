@@ -47,7 +47,7 @@ app.use("/monuments", monument);
 app.use("/guides", guide);
 app.use("/chat", chat);
 
-app.post('monuments/create/orderId', (req, res) => {
+app.post('/monuments/create/orderId', (req, res) => {
     console.log('new order!!', req.body);
     var options = {
         amount: req.body.price,  // amount in the smallest currency unit
@@ -56,25 +56,29 @@ app.post('monuments/create/orderId', (req, res) => {
     };
     instance.orders.create(options, function (err, order) {
         console.log(order);
-        res.send({ orderId: order.id });
+        // res.send({ orderId: order.id });
     });
 })
 
 
-app.post("/monuments/api/payment/verify", (req, res) => {
-    console.log("verify reached");
-    let body = req.body.response.razorpay_order_id + "|" + req.body.response.razorpay_payment_id;
+// app.post("/monuments/api/payment/verify", (req, res) => {
+//     console.log("verify reached");
+//     // let body = req.body.response.razorpay_order_id + "|" + req.body.response.razorpay_payment_id;
 
-    var crypto = require("crypto");
-    var expectedSignature = crypto.createHmac('sha256', 'TuagXi1XifPOb9664cEbwdmZ')
-        .update(body.toString())
-        .digest('hex');
-    console.log("sig received ", req.body.response.razorpay_signature);
-    console.log("sig generated ", expectedSignature);
-    var response = { "signatureIsValid": "false" }
-    if (expectedSignature === req.body.response.razorpay_signature)
-        response = { "signatureIsValid": "true" }
-    res.send(response);
+//     // var crypto = require("crypto");
+//     // var expectedSignature = crypto.createHmac('sha256', 'TuagXi1XifPOb9664cEbwdmZ')
+//     //     .update(body.toString())
+//     //     .digest('hex');
+//     // console.log("sig received ", req.body.response.razorpay_signature);
+//     // console.log("sig generated ", expectedSignature);
+//     // var response = { "signatureIsValid": "false" }
+//     // if (expectedSignature === req.body.response.razorpay_signature)
+//         // response = { "signatureIsValid": "true" }
+//     res.redirect("/final");
+// });
+
+app.get("/final", (req, res) => {
+    res.render("final");
 });
 
 app.get("/", async (req, res) => {
