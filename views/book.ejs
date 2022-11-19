@@ -7,42 +7,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Ticket</title>
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat+Alternates:wght@700&family=NTR&family=Poppins:wght@700&display=swap"
+        rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-assembly/v1.3.0/assembly.min.css" rel="stylesheet">
+    <script id="search-js" defer="" src="https://api.mapbox.com/search-js/v1.0.0-beta.14/web.js"></script>
+
+    <link rel="stylesheet" href="/css/book.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+
 
 </head>
 
 <body>
-    <div class="container">
+    <%- include("./navbar") %>
 
-        <div id='map' style='width: 400px; height: 300px;'></div>
-        <script>
-            mapboxgl.accessToken = 'pk.eyJ1Ijoia3VtYXI5NjI1IiwiYSI6ImNsMWo0eWtjNTB5dXcza280eDR0YWptd2EifQ.gGtajVvUt8ZqMwk3ltvltQ';
-            const map = new mapboxgl.Map({
-                container: 'map', // container ID
-                style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                center: [-74.5, 40], // starting position [lng, lat]
-                zoom: 9, // starting zoom
-                projection: 'globe' // display the map as a 3D globe
-            });
-            map.on('style.load', () => {
-                map.setFog({}); // Set the default atmosphere style
-            });
-            // Add geolocate control to the map.
-            map.addControl(
-                new mapboxgl.GeolocateControl({
-                    positionOptions: {
-                        enableHighAccuracy: true
-                    },
-                    // When active the map will receive updates to the device's location as it changes.
-                    trackUserLocation: true,
-                    // Draw an arrow next to the location dot to indicate which direction the device is heading.
-                    showUserHeading: true
-                })
-            );
-        </script>
-    </div>
+        <div class="container1">
+            <div class="card">
+                <div class="upper">
+                    <div class="info">
+                        <div class="img">
+                            <img src="/images/redfort.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <span id="title">
+                                <%=monument_name%>
+                            </span>
+                            <span id="location">
+                                Delhi
+                            </span>
+                            <span id="desc">
+                                Constructed during the reign of Shah Jahan in the 17thcentury, Red Fort or Lal Qila is
+                                one
+                                of the most spanopular historical buildings of India.
+                            </span>
+                            <span id="price">
+                                <label>Adult - </label>
+                                Rs. 80
+                            </span>
+                            <span id="price">
+                                <label>Child - </label>
+                                Rs. 50
+                            </span>
+                            <span id="time">
+                                11:00 AM - 8:00 PM
+                            </span>
+                        </div>
+                    </div>
+                    <div class="map">
+                        <mapbox-address-minimap satellite-toggle="true"></mapbox-address-minimap>
+                    </div>
+                </div>
+                <form class="lower" action="/monuments/create/orderId" method="POST">
+                    <button class="button-31" id="rzp-button1">Book Now</button>
+                </form>
+            </div>
+        </div>
 
+        <%- include("./footer") %>
+
+            <script>
+                const ACCESS_TOKEN = 'pk.eyJ1Ijoia3VtYXI5NjI1IiwiYSI6ImNsMWo0eWtjNTB5dXcza280eDR0YWptd2EifQ.gGtajVvUt8ZqMwk3ltvltQ';
+
+                const script = document.getElementById('search-js');
+                script.onload = () => {
+                    // Add search box to input
+                    const collection = mapboxsearch.autofill({ accessToken: ACCESS_TOKEN });
+
+                    // Configure minimap
+                    const minimap = document.querySelector('mapbox-address-minimap');
+                    minimap.accessToken = ACCESS_TOKEN;
+                    minimap.defaultMapStyle = ['mapbox', 'outdoors-v11'];
+                    minimap.theme = {
+                        variables: { border: '13px solid #bbb', borderRadius: '0 25px 25px 0', boxShadow: '0 2px 8px #000' }
+                    }
+                    minimap.onSaveMarkerLocation = (coordinate) => { console.log(coordinate); }
+                    minimap.feature = {
+                        type: 'Feature',
+                        geometry: { type: 'Point', coordinates: [77.2410, 28.6562] },
+                        properties: {}
+                    };
+
+                    // Set minimap feature on search box selection
+                    collection.addEventListener('retrieve', (e) => {
+                        minimap.feature = e.detail.features[0];
+                    })
+                };
+            </script>
+
+            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+            <script>
+                var orderId;
+
+
+                $(document).ready(function () {
+
+                    let monu_price = 8000;
+                    const monument_price = monu_price.toString();
+
+                    var settings = {
+                        "url": "/create/orderId",
+                        "method": "POST",
+                        "timeout": 0,
+                        "headers": {
+                            "Content-Type": "application/json"
+                        },
+                        "data": JSON.stringify({
+                            "amount": monument_price
+                        }),
+                    };
+                    //creates new orderId everytime
+                    $.ajax(settings).done(function (response) {
+
+                        orderId = response.orderId;
+                        console.log(orderId);
+                        $("button").show();
+                    });
+                });
+                document.getElementById('rzp-button1').onclick = function (e) {
+
+                    let monu_price = 8000;
+                    const monument_price = monu_price.toString();
+                    var options = {
+                        "key": "rzp_test_jz1qRgWLRxhf8n", // Enter the Key ID generated from the Dashboard
+                        "amount": monument_price, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                        "currency": "INR",
+                        "name": "SAFAR",
+                        "description": "Book Tourist Spots and Guides With US.",
+                        "image": "https://example.com/your_logo",
+                        "order_id": orderId,
+                        //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                        "handler": function (response) {
+
+                            // alert(response.razorpay_payment_id);
+                            // alert(response.razorpay_order_id);
+                            // alert(response.razorpay_signature);
+                            var settings = {
+                                "url": "/api/payment/verify",
+                                "method": "POST",
+                                "timeout": 0,
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "data": JSON.stringify({ response }),
+
+
+                            }
+                            $.ajax(settings).done(function (response) {
+                                alert(JSON.stringify(response));
+                            });
+
+
+                        },
+                        "prefill": {
+                            "name": "rohit",
+                            "email": "gaurav.kumar@example.com",
+                            "contact": "9999999999"
+                        },
+
+
+                        "theme": {
+                            "color": "#3399cc"
+                        }
+
+                    };
+
+
+                    var rzp1 = new Razorpay(options);
+                    rzp1.on('payment.failed', function (response) {
+                        // console.log(response.error.code);
+                        // console.log(response.error.description);
+                        // console.log(response.error.source);
+                        // console.log(response.error.step);
+                        // console.log(response.error.reason);
+                        // console.log(response.error.metadata.order_id);
+                        // console.log(response.error.metadata.payment_id);
+                    });
+                    rzp1.open();
+                    e.preventDefault();
+                }
+            </script>
 </body>
 
 </html>

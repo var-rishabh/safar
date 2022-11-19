@@ -1,5 +1,4 @@
-
-{
+var monuments = {
     "Anantapur": [
         "Madhavaraya Temple",
         "Mahalakshmi Temple",

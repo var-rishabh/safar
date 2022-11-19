@@ -1,12 +1,7 @@
-const axios = require('axios');
-const monument = require('../monuments.json')
-module.exports.getMonuments = async (req, res) => {
+module.exports.bookMonuments = async (req, res) => {
     try {
-        let states;
-        let monuments = monument
-        states = await axios.get("https://api.jsonserve.com/rPpMIb")
-        
-        res.render('monuments', { x: states.data, y: monuments});
+        console.log(req.body.cities_list);
+        res.render('monuments', { data: "none"});
     } catch (err) {
         return res.status(400).json({
             status: 'failure',
@@ -16,21 +11,27 @@ module.exports.getMonuments = async (req, res) => {
     }
 }
 
-module.exports.getMonument = async (req,res) =>{
-    try{
-        const monuments=monument;
-        const City = req.body.cityName;
-        console.log(City)
-        const myObj2 = JSON.stringify(monuments);
-        const myObj = JSON.parse(myObj2);
-        const reqMonument= myObj[City]
-        console.log(reqMonument)
-        return res.status(200).json({
-            status: 'success',
-            data: reqMonument
+module.exports.getMonuments = async (req, res) => {
+    try {
+        res.render('monuments', { data: "No Monument Found." });
+    } catch (err) {
+        return res.status(400).json({
+            status: 'failure',
+            message: err.message,
+            data: null
         });
+    }
+}
 
-    } catch(err){
+module.exports.getMonument = async (req, res) => {
+    try {
+        const { name, m } = req.body;
+        for (let key in m) {
+            if (key == name) {
+                console.log(m[key]);
+            }
+        }
+    } catch (err) {
         return res.status(400).json({
             status: 'failure',
             message: err.message,

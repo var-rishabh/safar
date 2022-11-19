@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safar</title>
+    <title>Safar | Guide</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="/css/guide.css" />
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/footer.css" />
+
+    <script src="/js/states.js"></script>
 </head>
 
 <body>
@@ -32,21 +34,15 @@
 
         <div class="container2">
             <div class="form">
-                <form action="#">
+                <form action=''>
                     <div class="select">
-                        <select>
+                        <select id="country">
                             <option value="" disabled selected hidden>Choose a State</option>
-                            <%for(var i=0 ; i< x.length;i++){%>
-                                <%for (var key in x[i]) { %>
-                                    <option value=`${<%= key %>}`><%= key %></option>
-                                <%}%>
-                            <%}%>
                         </select>
                     </div>
-                    <div class="">
-                        <select id="standard-select">
+                    <div class="select">
+                        <select id="state-code">
                             <option value="" disabled selected hidden>Choose a City</option>
-                            <option value="Option 1">Option 1</option>
                         </select>
                     </div>
                     <div>
@@ -67,38 +63,6 @@
                         </div>
                     </div>
                 </a>
-                <a href="#">
-                    <div class="card 1">
-                        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
-                        <div class="card_title title-white">
-                            <p>Imagica</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="card 1">
-                        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
-                        <div class="card_title title-white">
-                            <p>Imagica</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="card 1">
-                        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
-                        <div class="card_title title-white">
-                            <p>Imagica</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="card 1">
-                        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
-                        <div class="card_title title-white">
-                            <p>Imagica</p>
-                        </div>
-                    </div>
-                </a>
             </div>
         </div>
 
@@ -107,6 +71,36 @@
             <img src="/images/mon1.png" alt="monuments">
         </div>
         <%- include("./footer") %>
+
+            <script>
+                let user_country_code = "";
+                (function () {
+                    let country_list = states;
+                    let option = '';
+                    option += '<option>Select a State</option>';
+                    for (let country_code in country_list) {
+                        let selected = (country_code == user_country_code) ? ' selected' : '';
+                        option += '<option value="' + country_code + '">' + country_code + '</option>';
+                    }
+                    document.getElementById('country').innerHTML = option;
+                    let state_code_id = document.getElementById("state-code");
+                    function create_states_dropdown() {
+                        let options = '';
+                        let country_code = document.getElementById("country").value;
+                        let statescd = country_list[country_code];
+                        for (let state_new in statescd) {
+                            let selected_s = '';
+                            console.log(statescd[state_new]);
+                            options += '<option value="' + statescd[state_new] + '">' + statescd[state_new] + '</option>';
+                        }
+                        state_code_id.innerHTML = options;
+                    }
+                    const country_select = document.getElementById("country");
+                    country_select.addEventListener('change', create_states_dropdown);
+                    create_states_dropdown();
+                })();
+
+            </script>
 
 </body>
 
