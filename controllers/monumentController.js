@@ -26,11 +26,11 @@ module.exports.getMonuments = async (req, res) => {
 module.exports.getMonument = async (req, res) => {
     try {
         const { name, m } = req.body;
-        for (let key in m) {
-            if (key == name) {
-                console.log(m[key]);
-            }
-        }
+        // for (let key in m) {
+        //     if (key == name) {
+        //         console.log(m[key]);
+        //     }
+        // }
     } catch (err) {
         return res.status(400).json({
             status: 'failure',
